@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./pic/logo.png" alt="logo" width="50%">
-</p>
-
 # Grammy
 A Graphomer-based Multi-modal Modeling Strategy for Cancer Drug Response (CDR) Prediction
 
@@ -20,4 +16,5 @@ RDKit >= 2022.03
 python main.py
 
 ## contact me
+
 shujialiu418@gmail.com
