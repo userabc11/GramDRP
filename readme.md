@@ -56,7 +56,7 @@ Grammy
    |-----model.py  # model(core codes)
    |-----main.py  
    |-----run.py  # a quick demo
-   |-----parameter  # experiment settings
+   |-----parameter.py  # experiment settings
 ```
 ## Data
 our dataset is based on DeepCDR,you can get it by two ways, 
@@ -119,6 +119,7 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 ```bash
 shujialiu418@gmail.com
 ```
+
 
 
 
