@@ -95,8 +95,13 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
         = loadDrugCellData(args, "save", "single")
 
 # blind test
+# To generate the drug blind test split (train/val/test), run the following:
+# python ./data_process/loadData.py --func getDrugBlindTestCSVs
 # train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, _ \
 #     = getDrugBldDataLoader(args, "save", "single")
+
+# To generate the cell blind test split (train/val/test), run the following:
+# python ./data_process/loadData.py --func getCellBlindTestCSVs
 # train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, _ \
 #     = getCellBldDataLoader(args, "save", "single")
 
@@ -110,6 +115,7 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 ```bash
 shujialiu418@gmail.com
 ```
+
 
 
 
