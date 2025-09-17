@@ -64,6 +64,10 @@ Download a folder and replace the existing folder with the same name if it is em
 The data cleaning logic is implemented in `data_process/loadData.py`. 
 This script is **automatically invoked** during the train process, so you do not need to run it manually.  
 
+<p align="center">
+  <img src="./pic/pic3.png" alt="load data" width="400"/>
+</p>
+
 ```bash
 # choise 1 (not recommand) use git
 https://github.com/kimmo1019/DeepCDR 
@@ -115,6 +119,7 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 ```bash
 shujialiu418@gmail.com
 ```
+
 
 
 
