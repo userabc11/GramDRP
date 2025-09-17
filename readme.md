@@ -55,7 +55,7 @@ Grammy
    |-----layer.py  # model helper(core codes)
    |-----model.py  # model(core codes)
    |-----main.py  
-   |-----run.py  # a quick demo
+   |-----demo.py  # run our best model
    |-----parameter.py  # experiment settings
 ```
 ## Data
@@ -88,7 +88,7 @@ python run.py
 python constract_learn_pretrain.py
 # then you will see ./pretrained_omics_encoder.pth
 # 2. start train
-python run.py
+python demo.py
 ```
 
 ## Experiments
@@ -119,6 +119,7 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 ```bash
 shujialiu418@gmail.com
 ```
+
 
 
 
