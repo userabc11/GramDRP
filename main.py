@@ -295,17 +295,17 @@ def main(args):
     print(f"Using GPU {args.gpu_index}")
 
     # mix test
-    train_loader, val_loader, test_loader, blind_loader, num_node_features, num_edge_features, _ \
+    train_loader, val_loader, test_loader, _ , num_node_features, num_edge_features, _ \
         = loadDrugCellData(args, "save", "single")
 
     # blind test
-    # train_loader, val_loader, test_loader, blind_loader, num_node_features, num_edge_features, _ \
+    # train_loader, val_loader, test_loader, _ , num_node_features, num_edge_features, _ \
     #     = getDrugBldDataLoader(args, "save", "single")
-    # train_loader, val_loader, test_loader, blind_loader, num_node_features, num_edge_features, _ \
+    # train_loader, val_loader, test_loader, _ , num_node_features, num_edge_features, _ \
     #     = getCellBldDataLoader(args, "save", "single")
 
     # predict NAN response
-    # train_loader, val_loader, test_loader, blind_loader, num_node_features, num_edge_features, _ \
+    # train_loader, val_loader, test_loader, _ , num_node_features, num_edge_features, _ \
     #     = loadExitAndNanDrugCellData(args, "save", "single")
 
     # model
@@ -341,10 +341,11 @@ def main(args):
             # do val
             test_loss, pcc, scc, rmse = test(val_loader, model, criterion, device, epoch)
             test_losses.append(test_loss)
-            IO.cprint(
-                '[##VAL##]Epoch #{:03d},Test_Loss:{:.4f},pcc:{:.3f},scc:{:.3f},rmse:{:.3f}'.format(epoch, test_loss,
+            if (epoch + 1) % 5 == 0:
+                IO.cprint(
+                    '[##VAL##]Epoch #{:03d},Test_Loss:{:.4f},pcc:{:.3f},scc:{:.3f},rmse:{:.3f}'.format(epoch, test_loss,
                                                                                                    pcc, scc, rmse))
-            # 早停机制
+            # early stop
             if test_loss < best_loss:
                 best_model_dict = copy.deepcopy(model.state_dict())
                 best_loss = test_loss
