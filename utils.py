@@ -80,7 +80,7 @@ def plot_violin_from_csv():
     df_cdr['method'] = 'deepCDR'
     df_drp['method'] = 'deepDRP'
     df_tta['method'] = 'deepTTA'
-    df_gfr['method'] = 'gfr'
+    df_gfr['method'] = 'grammy'
     df_mcmvdrp['method'] = 'MCMVDRP'
     df_aeg['method'] = 'deepAEG'
 
@@ -488,4 +488,5 @@ def plot_violin_by_tcga_type_for_drug(csv_path, save_path, drug_name):
         metrics_csv = os.path.join(save_path, f"{drug_name}_metrics.csv")
         metrics_df.to_csv(metrics_csv, index=False)
         print(f"性能指标已保存到：{metrics_csv}")
+
 
