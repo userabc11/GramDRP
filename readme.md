@@ -59,9 +59,9 @@ Grammy
    |-----parameter.py  # experiment settings
 ```
 ## Data
-our dataset is based on DeepCDR,you can get it by two ways, 
-Download a folder and replace the existing folder with the same name if it is empty.
-The data cleaning logic is implemented in `data_process/loadData.py`. 
+our dataset is based on DeepCDR，we further refined the dataset by retaining only those drugs with IC50 values available for more than half of the cell lines. The filtering step resulted in a balanced dataset containing **185 drugs** and **561 cell lines**, with a total of **99,594 drug-cell line response pairs**. 
+We recommend downloading the dataset via **Baidu Netdisk**.
+The data cleaning and alignment logic is implemented in data_process/loadData.py.
 This script is **automatically invoked** during the train process, so you do not need to run it manually.  
 
 <p align="center">
@@ -119,6 +119,7 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 ```bash
 shujialiu418@gmail.com
 ```
+
 
 
 
