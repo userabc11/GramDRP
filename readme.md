@@ -43,11 +43,12 @@ The structure of Grammy
 Grammy
    |-----outputs  # back up and train log
    |-----data_process
-   |          |--------data  # download by guide
+   |          |--------data  # download here
+   |          |          |----- ....
    |          |--------dataSet.py  # dataSet(core codes)
    |          |--------loadData.py  # data cleaning and data process
    |-----pic
-   |-----zoo
+   |-----zoo # download here 
    |      |-------model.pth  # our trained state dict
    |      |-------test_dataset.pkl  # test data loader for demo
    |-----data.py  # data loader
@@ -58,8 +59,9 @@ Grammy
    |-----parameter  # experiment settings
 ```
 ## Data
-our dataset is based on DeepCDR,you can get it by two ways
-The data cleaning logic is implemented in `data_process/loadData.py`.  
+our dataset is based on DeepCDR,you can get it by two ways, 
+Download a folder and replace the existing folder with the same name if it is empty.
+The data cleaning logic is implemented in `data_process/loadData.py`. 
 This script is **automatically invoked** during the train process, so you do not need to run it manually.  
 
 ```bash
@@ -108,5 +110,6 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 ```bash
 shujialiu418@gmail.com
 ```
+
 
 
