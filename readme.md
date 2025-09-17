@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./pic/logo.png" alt="logo" width="50%">
-</p>
-
 # Grammy
 A Graphomer-based Multi-modal Modeling Strategy for Cancer Drug Response (CDR) Prediction
 
@@ -112,3 +108,4 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 ```bash
 shujialiu418@gmail.com
 ```
+
