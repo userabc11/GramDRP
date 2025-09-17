@@ -117,8 +117,10 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 
 ## contact me
 ```bash
+ bliu@bliulab.net
 shujialiu418@gmail.com
 ```
+
 
 
 
