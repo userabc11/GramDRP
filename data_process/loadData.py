@@ -44,6 +44,72 @@ def DrugidToSmiles():
 
     return drugid2smiles
 
+def getCellBlindTestCSVs():
+    response = pd.read_csv(adequent_test_file, index_col=0)
+    np.random.seed(16)
+
+    # 获取所有列名
+    all_cols = response.columns.tolist()
+
+    # 1. 随机选取 80% 的列为 train 列
+    train_cols = np.random.choice(all_cols, size=int(0.8 * len(all_cols)), replace=False)
+
+    # 2. 剩下的列作为 val+test 候选列
+    remaining_cols = list(set(all_cols) - set(train_cols))
+
+    # 3. 拆分 val/test 各 50%
+    val_cols = np.random.choice(remaining_cols, size=int(len(remaining_cols) / 2), replace=False)
+    test_cols = list(set(remaining_cols) - set(val_cols))
+
+    # 构造完整 train/val/test DataFrame（其余列填 NaN）
+    # 构造完整 train/val/test DataFrame（其余列填 NaN）
+    train_df = pd.DataFrame(np.nan, index=response.index, columns=all_cols)
+    val_df = pd.DataFrame(np.nan, index=response.index, columns=all_cols)
+    test_df = pd.DataFrame(np.nan, index=response.index, columns=all_cols)
+
+    # 填入实际列
+    train_df[train_cols] = response[train_cols]
+    val_df[val_cols] = response[val_cols]
+    test_df[test_cols] = response[test_cols]
+
+    # 删除全为 NaN 的列
+    train_df = train_df.dropna(axis=1, how='all')
+    val_df = val_df.dropna(axis=1, how='all')
+    test_df = test_df.dropna(axis=1, how='all')
+
+    # 保存为 CSV 文件，空值填充为字符串 "NA"
+    train_df.to_csv('./cell_bld_train.csv',index=True, na_rep="NA")
+    val_df.to_csv('./cell_bld_val.csv',index=True,  na_rep="NA")
+    test_df.to_csv('./cell_bld_test.csv',index=True, na_rep="NA")
+
+def getDrugBlindTestCSVs():
+    # 读取数据
+    response = pd.read_csv(adequent_test_file, index_col=0)
+    np.random.seed(16)
+
+    # 获取所有行索引（比如 drugId/cellId）
+    all_indices = response.index.tolist()
+
+    # 1. 随机选取 80% 的 index 作为 train
+    train_indices = np.random.choice(all_indices, size=int(0.8 * len(all_indices)), replace=False)
+
+    # 2. 剩下的 index 作为 val+test 候选
+    remaining_indices = list(set(all_indices) - set(train_indices))
+
+    # 3. 拆分 val/test 各 50%
+    val_indices = np.random.choice(remaining_indices, size=int(len(remaining_indices) / 2), replace=False)
+    test_indices = list(set(remaining_indices) - set(val_indices))
+
+    # 4. 构造子 DataFrame
+    train_df = response.loc[train_indices]
+    val_df = response.loc[val_indices]
+    test_df = response.loc[test_indices]
+
+    # 5. 保存为 CSV 文件，空值填充为字符串 "NA"
+    train_df.to_csv('./drug_blind_train.csv', index=True, na_rep="NA")
+    val_df.to_csv('./drug_blind_val.csv', index=True, na_rep="NA")
+    test_df.to_csv('./drug_blind_test.csv', index=True, na_rep="NA")
+
 def RespondFromCSV(drugid2smiles, Cancer_response_file, all_cellines):
     # Cancer_response_exp_file中记录药物在细胞系中的IC50值
     respond_data = pd.read_csv(Cancer_response_file, sep=',', header=0, index_col=[0])
@@ -282,4 +348,5 @@ l = mutation_feature.sum(axis=1).tolist()
 l.sort()
 print(l)
 a = 0
+
 """
