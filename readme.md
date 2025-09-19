@@ -74,7 +74,7 @@ This script is **automatically invoked** during the train process, so you do not
 https://github.com/kimmo1019/DeepCDR 
 
 # choise 2 (recommand) use pan.baidu
-https://pan.baidu.com/s/1WMw2lqVnB40O4q-pUKiP7A?pwd=1234
+ https://pan.baidu.com/s/1tFbhDC3b-5H4-LUwsJnbaw?pwd=Gram
 ```
 
 ## 🚀 Quick Start
@@ -121,6 +121,7 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
  bliu@bliulab.net
 shujialiu418@gmail.com
 ```
+
 
 
 
