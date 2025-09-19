@@ -1,4 +1,4 @@
-# Grammy
+# GramDRP
 A Graphomer-based Multi-modal Modeling Strategy for Cancer Drug Response (CDR) Prediction
 
 ## Model Structure
@@ -121,6 +121,7 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
  bliu@bliulab.net
 shujialiu418@gmail.com
 ```
+
 
 
 
