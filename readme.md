@@ -109,11 +109,12 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 # python ./data_process/loadData.py --func getCellBlindTestCSVs
 # train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, _ \
 #     = getCellBldDataLoader(args, "save", "single")
+```
 
-# predict NAN response
-# train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, _ \
-#     = loadExitAndNanDrugCellData(args, "save", "single")
+```bash
+train model and predict nan responses
 
+python predict_nan.py
 ```
 
 ## contact me
