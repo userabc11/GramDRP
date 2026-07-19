@@ -39,11 +39,9 @@ class MyDataset(Dataset):
         self.smiles_embedding_dict = {}
         self.atom_types = [35, 5, 6, 7, 8, 9, 78, 15, 16, 17, 53]
         self.h_count_stat = [0] * 5  # 初始化计数器，记录 one-hot 中每个位置为1的次数
-        with open("./chemberta_embeddings.pkl", 'rb') as f:
-            self.smiles_BertEmbedding_Dict = pkl.load(f)
-        with open("./data_process/atom_embedding_dict.pkl", 'rb') as f:
+        with open("../Graphormer-master/data_process/atom_embedding_dict.pkl", 'rb') as f:
             self.atom_embedding_dict = pkl.load(f)
-        with open('./data_process/smiles_embedding_dict.pkl', 'rb') as f:
+        with open('../Graphormer-master/data_process/smiles_embedding_dict.pkl', 'rb') as f:
             self.smiles_embedding_dict = pkl.load(f)
         for s in self.smiles_Graph_Dict:
             self.smiles_Graph_Dict[s] = self.smiles_to_graph(s)
@@ -242,7 +240,7 @@ class MyDataset(Dataset):
         smiles = self.all_respond[idx][1]
         data = self.smiles_Graph_Dict[smiles]
         fp = self.smiles_FingerPrint_Dict[smiles]
-        bertEmbedding = self.smiles_BertEmbedding_Dict[smiles]
+        bertEmbedding = torch.zeros(768, dtype=torch.float)
         y = torch.tensor([self.all_respond[idx][2]],dtype=torch.float).unsqueeze(0)
         drugId = self.smiles_drugid_Dict[smiles]
         #x,edge_index,edge_attr = self.smiles_to_graph(smiles)

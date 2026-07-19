@@ -1,0 +1,14 @@
+# static class
+class CONSTANT:
+    MACCSKEY_FP_DIM = 167
+    MORGAN_FP_DIM = 512
+    MOIR_EMBEDDING_DIM = 1024
+
+    GEXPR_DIM = 697
+    METHY_DIM = 808
+
+    MIX_TEST = 0
+    DRUG_BLD = 1
+    CELL_BLD = 2
+    PREDICT_MISSING = 3
+    CCLE = 4

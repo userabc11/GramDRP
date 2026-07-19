@@ -41,24 +41,46 @@ pip install pickle
 The structure of SADRP
 ```bash
 SADRP
-   |-----outputs  # back up and train log
-   |-----data_process
-   |          |--------data  # download here
-   |          |          |----- ....
-   |          |--------dataSet.py  # dataSet(core codes)
-   |          |--------loadData.py  # data cleaning and data process
-   |-----pic
-   |-----zoo # download here 
-   |      |-------model.pth  # our trained state dict
-   |      |-------test_dataset.pkl  # test data loader for demo
-   |-----data.py  # data loader
-   |-----layer.py  # model helper(core codes)
-   |-----model.py  # model(core codes)
-   |-----main.py  
-   |-----demo.py  # run our best model
-   |-----constract_learn_pretrain.py  # if train, run it first
-   |-----parameter.py  # experiment settings
+  |-----outputs  # back up and train log
+  |-----predict_nan  # unknown response prediction demo
+  |          |-----predict.py
+  |          |-----model.pth
+  |          |-----mapping.csv
+  |          |-----drug_summary.csv
+  |-----soll
+  |          |-----main.py
+  |          |-----soll.py
+  |-----data_process
+  |          |--------data  # download here
+  |          |          |----- ....
+  |          |--------dataSet.py  # dataSet(core codes)
+  |          |--------loadData.py  # data cleaning and data process
+  |-----pic
+  |-----zoo # download here 
+  |      |-------model.pth  # our trained state dict
+  |      |-------test_dataset.pkl  # test data loader for demo
+  |-----data.py  # data loader
+  |-----layer.py  # model helper(core codes)
+  |-----model.py  # model(core codes)
+  |-----main.py  
+  |-----demo.py  # run quick
+  |-----constract_learn_pretrain.py  # if train, run it first
+  |-----parameter.py  # experiment settings
 ```
+
+## SOLL
+SOLL is the structured drug and omics learning module used by SADRP for drug representation and multi-omics fusion. It focuses on capturing structural paths, bond semantics, and cross-omics interactions so the model can better estimate drug response under complex cellular contexts.
+
+## Unknown response prediction
+We provide a one-click prediction entry for unknown responses under `predict_nan/`.
+
+Run it from the repository root `SADRP/`:
+```bash
+python predict_nan/predict.py
+```
+
+This script reads `predict_nan/model.pth` and `predict_nan/mapping.csv`, then writes the final result to `predict_nan/drug_summary.csv`. It only outputs the summary table, and it also prints drugs with `Unknown num > 100` in the same sorted order as the CSV.
+
 ## Data
 our dataset is based on DeepCDR，we further refined the dataset by retaining only those drugs with IC50 values available for more than half of the cell lines. The filtering step resulted in a balanced dataset containing **185 drugs** and **561 cell lines**, with a total of **99,594 drug-cell line response pairs**. 
 We recommend downloading the dataset via **Baidu Netdisk**.
@@ -114,7 +136,7 @@ train_loader, val_loader, test_loader, _, num_node_features, num_edge_features, 
 ```bash
 train model and predict nan responses
 
-python predict_nan.py
+python predict_nan/predict.py
 ```
 
 ## contact me
