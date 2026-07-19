@@ -77,7 +77,7 @@ cd soll
 python main.py
 ```
 
-这个 demo 会加载 PyTorch Geometric 的 ESOL 数据集，并用一个带 SOLL 模块的 GCN 跑几轮训练，方便你快速看懂 SOLL 的用法和输出。
+This demo loads the ESOL dataset from PyTorch Geometric and trains a GCN with the SOLL module for a few epochs, so you can quickly understand how SOLL works and what it outputs.
 
 
 ## Unknown response prediction
