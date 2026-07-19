@@ -69,7 +69,16 @@ SADRP
 ```
 
 ## SOLL
-SOLL is the structured drug and omics learning module used by SADRP for drug representation and multi-omics fusion. It focuses on capturing structural paths, bond semantics, and cross-omics interactions so the model can better estimate drug response under complex cellular contexts.
+The key component of SOLL:(1) Path triplet data structure. (2) Caching strategy. (3) Tensorization of SDP and edge encodings. 
+SOLL provides a easy usage of SDP encoding and Edge encoding.
+Using example:
+```bash
+cd soll
+python main.py
+```
+
+这个 demo 会加载 PyTorch Geometric 的 ESOL 数据集，并用一个带 SOLL 模块的 GCN 跑几轮训练，方便你快速看懂 SOLL 的用法和输出。
+
 
 ## Unknown response prediction
 We provide a one-click prediction entry for unknown responses under `predict_nan/`.
